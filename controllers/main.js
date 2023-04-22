@@ -4,19 +4,18 @@ exports.getIndex = (req, res) => {
   res.render("index", {
     pageTitle: "Home",
     path: "/",
+    skills: [],
   });
 };
 
-exports.getSkills = async (req, res) => {
+exports.postSkills = async (req, res) => {
+  const username = req.body.username;
   try {
-    const response = await axios.get(`https://torre.bio/api/bios/${req.params.username}`);
+    const response = await axios.get(`https://torre.bio/api/bios/${username}`);
     const { data } = response;
-    res.render("", {
-      pageTitle: "Skills",
-      path: "/skills",
+    res.render("index", {
+      path: "/",
       skills: data.strengths,
-      username: req.params.username,
-      userImg: data.picture,
     });
   } catch (error) {
     console.error(error);

@@ -27,7 +27,7 @@
             </div>
             <div class="showcaseForm card">
                 <h2>Get Your Skills !</h2>
-                <form name="contact" method="GET" action="/skills" >
+                <form name="contact" method="POST" action="/" >
                     <div class="formControl">
                         <input type="text" name="username" placeholder="Username" required>
                     </div>
@@ -36,8 +36,54 @@
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
+    <!-- Skills -->
+    <% if (skills && skills.length > 0) { %>
+        <section class="skills">
+          <div class="container ">
+            <div class="card">
+              <h4>Master</h4>
+              <ul>
+                <% skills.forEach(skill => { %>
+                  <%if(skill.proficiency=="master"){ %>
+                    <li><%= skill.name %></li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Expert</h4>
+              <ul>
+                <% skills.forEach(skill => { %>
+                  <%if(skill.proficiency=="expert"){ %>
+                    <li><%= skill.name %></li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Proficient</h4>
+              <ul>
+                <% skills.forEach(skill => { %>
+                  <%if(skill.proficiency=="proficient"){ %>
+                    <li><%= skill.name %></li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Novice</h4>
+              <ul>
+                <% skills.forEach(skill => { %>
+                  <%if(skill.proficiency=="novice"){ %>
+                    <li><%= skill.name %></li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+          </div>
+        </section>
+      <% } %>
+          <!-- Footer -->
     <footer class="footer bg-dark py5">
         <div class="container grid grid3">
             <div>
