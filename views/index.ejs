@@ -80,6 +80,17 @@
                 <% }); %>
               </ul>
             </div>
+            <div class="card">
+              <h4>No Experience But Interested</h4>
+              <ul>
+                <% skills.forEach(skill => { %>
+                  <%if(skill.proficiency=="no-experience-interested"){ %>
+                    <li><%= skill.name %></li>
+                  <% } %>
+                <% }); %>
+              </ul>
+            </div>
+          </div>  
           </div>
         </section>
       <% } %>
