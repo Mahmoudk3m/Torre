@@ -6,13 +6,13 @@ const mainRoutes = require("./routes/main");
 const app = express();
 
 app.set("view engine", "ejs");
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(mainRoutes);
 
-app.listen(3000, () => {
-  console.log("Server is listening on port 3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server is listening on port " + (process.env.PORT || 3000));
 });
