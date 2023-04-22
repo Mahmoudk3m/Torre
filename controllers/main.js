@@ -13,9 +13,15 @@ exports.postSkills = async (req, res) => {
   try {
     const response = await axios.get(`https://torre.bio/api/bios/${username}`);
     const { data } = response;
+    userSummary = data.person.summaryOfBio;
+    userSummary = userSummary.replace(/I&#x27;/gi, "");
     res.render("index", {
       path: "/",
       skills: data.strengths,
+      username: data.person.name,
+      userImg: data.person.picture,
+      userHeadline: data.person.professionalHeadline,
+      userSummary: userSummary,
     });
   } catch (error) {
     console.error(error);

@@ -13,33 +13,56 @@
     <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <h1 class="logo">Torre.</h1>
+            <h1 class="logo"><a href="/">Torre.</a></h1>
+            <% if(skills&&skills.length>0){ %>
             <nav>
+                <ul>
+                    <li><a href="#Skills"><%=username %></a></li>
+                </ul>
             </nav>
+            <% } %>
         </div>
     </div>
-
-    <section class="showcase">
+    <!-- Showcase -->
+    <div class="mainContent">
+      <section class="showcase">
         <div class="container grid">
             <div class="showcaseText">
+              <% if (skills&&skills.length>0){ %>
+                <div class="hex">
+                  <div class="hex-background">
+                    <img src="<%=userImg %>">
+                  </div>
+                </div>
+                <%}else{ %>
                 <h1>Get Your Skills</h1>
                 <p>Looking to showcase your skills and stand out in the job market? Look no further than Torre API.With our platform, you can easily access and highlight your skills and experiences to potential employers.</p>
-            </div>
+                <%} %>
+              </div>
             <div class="showcaseForm card">
-                <h2>Get Your Skills !</h2>
-                <form name="contact" method="POST" action="/" >
-                    <div class="formControl">
-                        <input type="text" name="username" placeholder="Username" required>
-                    </div>
-                    <input type="submit" value="Get Skills" class="btn btn-secondary">
-                </form>
+              <% if (skills&&skills.length>0){ %>
+                <div class="userInfo">
+                  <h1><%=username%></h1>
+                  <h3><%=userHeadline %></h3>
+                  <p><%=userSummary %></p>  
+                </div>
+                <%}else{ %>
+                  <h2>Get Your Skills !</h2>
+                  <form name="contact" method="POST" action="/" >
+                      <div class="formControl">
+                          <input type="text" name="username" placeholder="Username" required>
+                      </div>
+                      <input type="submit" value="Get Skills" class="btn btn-secondary">
+                  </form>
+                <%} %>
             </div>
         </div>
     </section>
     <!-- Skills -->
     <% if (skills && skills.length > 0) { %>
-        <section class="skills">
+        <section class="skills" id="Skills">
           <div class="container ">
+            <h1 class="sectionTitle">Skills</h1>
             <div class="card">
               <h4>Master</h4>
               <ul>
@@ -94,6 +117,7 @@
           </div>
         </section>
       <% } %>
+    </div>
           <!-- Footer -->
     <footer class="footer bg-dark py5">
         <div class="container grid grid3">
